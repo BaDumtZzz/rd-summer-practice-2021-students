@@ -1,65 +1,121 @@
-header p{
-	align:center;
+header p {
+	align: center;
+	align-content: center;
 }
-html,body{
+
+html, body {
 	height: 100%;
 	width: 100%;
 	font-family: "FiraSans", cursive;
+	margin: 0;
+	align-content: center;
+	vertical-align: middle;
 }
+
 a {
 	color: white;
 	text-decoration: none
 }
+
 div {
 	border: 1px solid black;
 }
+
 header{
 	height: 150px;
 	position: relative;
 	background-color: pink;
-	display: flex;
+	display: inline-block;
 	text-align: center;
+	width: 100%;
 }
+
+#img_heart, #img_coin{
+	height: 20px;
+	width: auto;
+	vertical-align: middle;
+}
+
+.game-name {
+	font-size: 30px;
+}
+
 .container{
 	max-width: 1400px;
 	margin: 0 auto;
 	padding: 0px 10px;
+	border: none;
 }
+
 .progress-bar{
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
 	background-color: grey;
 	height: 30px;
 	justify-content: center;
 	align-self: flex-end;
-	margin-bottom: 5px;
 }
+
 .game{
 	display: flex;
 	height: 500px;
+	margin-bottom: 20px;
 }
+
 .game-map{
 	flex: 1 1 150px;
+	text-align: center;
+	vertical-align: middle;
 }
+
 .game-score{
-	flex: 0 0 150px;
+	flex: 0 0 200px;
 }
+
 .game-button{
 	height: 50px;
+	border-width: 0;
 }
+
 .game-button{
-    display:flex;
+    display: flex;
     justify-content: center;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
+    vertical-align: middle;
 }
-button{
+
+.team-name {
+	font-weight: bold;
+	margin-left: 8px;
+}
+
+.team-info {
+	margin-left: 5px;
+}
+
+button {
     background-color: #00BFFF;
-    border-color: #FFFFFF;
+    border-color: #696969;
+    border-width: 1px;
     padding: 8px 16px;
+    margin-left: -2px;
+    height: 40px;
+    width: auto;
 }
+
 button[name="startButton"]{
     background-color: #7CFC00;
 }
 button[name="closeButton"]{
     background-color: #FF0000;
+}
+
+#start-game-button {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+#exit-game-button {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
