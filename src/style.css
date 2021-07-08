@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after  { box-sizing: inherit; }
+*,*:before, *:after{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+html,body{
+	height: 100%;
+	width: 100%;
+	font-family: "FiraSans", cursive;
+}
+a {
+	color: white;
+	text-decoration: none
+}
+div {
+	border: 1px solid black;
+}
+header{
+	height: 150px;
+	position: relative;
+	background-color: pink;
+	display: flex;
+	text-align: center;
+}
+.container{
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0px 10px;
+}
+.progress-bar{
+	width: 80%;
+	margin: 0 auto;
+	background-color: grey;
+	height: 30px;
+	justify-content: center;
+	align-self: flex-end;
+	margin-bottom: 5px;
+}
+.game{
+	display: flex;
+	height: 500px;
+}
+.game-map{
+	flex: 1 1 150px;
+}
+.game-score{
+	flex: 0 0 150px;
+}
+.game-button{
+	height: 50px;
+}
+
