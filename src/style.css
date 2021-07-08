@@ -54,6 +54,7 @@ header{
 	height: 30px;
 	justify-content: center;
 	align-self: flex-end;
+	border-radius: 8px;
 }
 
 .game{
