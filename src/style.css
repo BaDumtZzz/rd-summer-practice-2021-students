@@ -52,3 +52,14 @@ header{
     justify-content: center;
     flex-wrap:wrap;
 }
+button{
+    background-color: #00BFFF;
+    border-color: #FFFFFF;
+    padding: 8px 16px;
+}
+button[name="startButton"]{
+    background-color: #7CFC00;
+}
+button[name="closeButton"]{
+    background-color: #FF0000;
+}
