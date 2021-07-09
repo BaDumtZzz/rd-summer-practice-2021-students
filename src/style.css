@@ -122,7 +122,26 @@ button {
     font-weight: bold;
 }
 
+<<<<<<< HEAD
 .game-button button:last-child  {
 	border-color: #D11213;
 	color: #D11213;
 }
+=======
+button.startButton{
+    background-color: #7CFC00;
+}
+button.closeButton{
+    background-color: #FF0000;
+}
+
+.game-button button:first-child {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+.game-button button:last-child  {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+>>>>>>> 77426518f6dfe374c121c6c8f235edb40093854a
