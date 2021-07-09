@@ -779,7 +779,6 @@
                     // mapCellSize: 25
                 };
             }
-
             function getButtons() {
                 // TODO Task1.2 Объявление переменных и их связка с DOM
                 return {
@@ -793,7 +792,6 @@
                     // $btnCancel:
                 };
             }
-            
             function getImages() {
                 // TODO Task1.3 Объявление переменных и их связка с DOM
                 return {
@@ -1012,7 +1010,7 @@
                 this.game.$gameCaption
                     .empty()
                     .append($(app.utils.t(
-                        "<div class='game-caption-name'>{name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
+                        "<div>{name} <span class='game-status-{status}'>{statusName}</span><div>",
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
             GameView.prototype.setTimer = function (data) {
@@ -1028,7 +1026,7 @@
                 }
                 this.game.$switchTimer
                     .empty()
-                    .append(app.utils.t("<span class='{state}'>{m}:{s}</span>",
+                    .append(app.utils.t("<div><span class='timer {state}'>{m}:{s}</span><div>",
                         {state: timerState, m: minutes, s: seconds}));
             };
             GameView.prototype.getPlayer = function (player) {
@@ -1039,12 +1037,10 @@
                  * TODO: Task 6. Поменяйте под вашу вёрстку
                  */
                 return $(app.utils.t(
-                    "<div id='player{playerId}' class='game-player game-player-status-{status}'>" +
-                        "<span class='game-player-name'>{name}</span>" +
-                        " [<span class='game-player-coins'>{coins}</span>;" +
-                        "<span class='game-player-lives'>{lives}</span>;" +
-                        "<span class='game-player-deaths'>{deaths}</span>]" +
-                    "</div>", {
+                    "<div><span class='game-player-name'>{name}</span>" +
+                    "[<span class='game-player-coins'>{coins}</span>;" +
+                    "<span class='game-player-lives'>{lives}</span>;" +
+                    "<span class='game-player-deaths'>{deaths}</span>]</div>", {
                     playerId: player.id,
                     status: status,
                     name: player.name,
