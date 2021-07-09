@@ -104,19 +104,19 @@ button {
     width: auto;
 }
 
-button[name="startButton"]{
+button.startButton{
     background-color: #7CFC00;
 }
-button[name="closeButton"]{
+button.closeButton{
     background-color: #FF0000;
 }
 
-#start-game-button {
+.game-button button:first-child {
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
 }
 
-#exit-game-button {
+.game-button button:last-child  {
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
