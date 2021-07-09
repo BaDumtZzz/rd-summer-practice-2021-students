@@ -10,6 +10,7 @@ html, body {
 	margin: 0;
 	align-content: center;
 	vertical-align: middle;
+	background-color: #212529;
 }
 
 a {
@@ -24,10 +25,10 @@ div {
 header{
 	height: 150px;
 	position: relative;
-	background-color: pink;
 	display: inline-block;
 	text-align: center;
 	width: 100%;
+
 }
 
 #img_heart, #img_coin{
@@ -36,8 +37,10 @@ header{
 	vertical-align: middle;
 }
 
-.game-name {
+.game-time {
 	font-size: 30px;
+	color: #A9A9A9;
+	font-weight: bold;
 }
 
 .container{
@@ -55,22 +58,35 @@ header{
 	justify-content: center;
 	align-self: flex-end;
 	border-radius: 8px;
+	margin-top: 1%;
+	border: none;
 }
 
 .game{
 	display: flex;
 	height: 500px;
-	margin-bottom: 20px;
+	margin-top: 30px;
+	color: #A9A9A9;
+	border: none;
 }
 
 .game-map{
 	flex: 1 1 150px;
 	text-align: center;
 	vertical-align: middle;
+	border: none;
 }
 
 .game-score{
 	flex: 0 0 200px;
+	border: none;
+}
+
+.game-score-1, .game-score-2{
+	border-radius: 10px; 
+	border-color: #A9A9A9;
+	border-width: 3px;
+	background: #303030;
 }
 
 .game-button{
@@ -95,28 +111,18 @@ header{
 }
 
 button {
-    background-color: #00BFFF;
-    border-color: #696969;
-    border-width: 1px;
-    padding: 8px 16px;
-    margin-left: -2px;
-    height: 40px;
+    background-color: #212529;
+    border-color: #A9A9A9;
+    color: #A9A9A9;
+    border-width: 2px;
+    border-radius: 5px;
+    margin: 0 0 10px 10px;
     width: auto;
+    font-size: 16px;
+    font-weight: bold;
 }
 
-button[name="startButton"]{
-    background-color: #7CFC00;
-}
-button[name="closeButton"]{
-    background-color: #FF0000;
-}
-
-#start-game-button {
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-}
-
-#exit-game-button {
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
+.game-button button:last-child  {
+	border-color: #D11213;
+	color: #D11213;
 }
