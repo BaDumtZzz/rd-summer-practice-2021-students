@@ -101,13 +101,23 @@ header{
     vertical-align: middle;
 }
 
-.team-name {
+.team, #name-team-1, #name-team-2 {
 	font-weight: bold;
 	margin-left: 8px;
+	color: red;
 }
 
 .team-info {
 	margin-left: 5px;
+}
+
+#team-lives-1, #team-lives-2,
+#team-coins-1, #team-coins-2 {
+	text-align: right;
+}
+
+tr {
+	width: 100%;
 }
 
 button {
