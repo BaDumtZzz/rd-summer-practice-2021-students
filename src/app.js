@@ -758,56 +758,65 @@
                  *  можно использовать $('selector')
                  */
                 return {
-                    // $gameCaption: ,
-                    // $switchTimer: ,
-                    // team1: {
-                    //     $container: ,
-                    //     $caption: ,
-                    //     $players: ,
-                    //     $lives: ,
-                    //     $coins:
-                    // },
-                    // team2: {
-                    //     $container: ,
-                    //     $caption: ,
-                    //     $players: ,
-                    //     $lives: ,
-                    //     $coins:
-                    // },
-                    // mapBuffer: null,
-                    // $mapCanvas: ,
-                    // mapCellSize: 25
+                    $gameCaption: $("#game-name"),
+                    $switchTimer: $("#game-timer"),
+
+                    team1: {
+                        $container: $("#game-score-1"),
+                        $caption: $("#name-team-1"),
+                        $players: $("#team-players-1"),
+                        $lives: $("#team-lives-1"),
+                        $coins: $("#team-coins-1")
+                    },
+
+                    team2: {
+                        $container: $("#game-score-2"),
+                        $caption: $("#name-team-2"),
+                        $players: $("#team-players-2"),
+                        $lives: $("#team-lives-2"),
+                        $coins: $("#team-coins-2")
+                    },
+
+                   mapBuffer: null,
+                   $mapCanvas: $("#canvas-map"),
+                   mapCellSize: 25
                 };
             }
+
             function getButtons() {
                 // TODO Task1.2 Объявление переменных и их связка с DOM
                 return {
-                    // $btnGameList:,
-                    // $btnStart:,
-                    // $btnConnect:,
-                    // $btnConnectPolice:,
-                    // $btnConnectThief:,
-                    // $btnLeave:,
-                    // $btnPause:,
-                    // $btnCancel:
+                    $btnGameList: $("#list-game"),
+                    $btnStart: $("#start-game"),
+                    $btnConnect: $("#connect-game"),
+                    $btnConnectPolice: $("#connect-police"),
+                    $btnConnectThief: $("#connect-scammers"),
+                    $btnLeave: $("#leave-game"),
+                    $btnPause: $("#pause-game"),
+                    $btnCancel: $("#break-game")
                 };
             }
+            
             function getImages() {
                 // TODO Task1.3 Объявление переменных и их связка с DOM
                 return {
-                    // imgHeart: ,
-                    // imgCoin: ,
-                    // imgPolice: ,
-                    // imgPoliceSelf: ,
-                    // imgThief: ,
-                    // imgThiefSelf: ,
-                    // imgSwitch:
+                    imgHeart: $('#img_heart').get(0),
+                    imgCoin: $('#img_coin').get(0),
+                    imgPolice: $('#img_police').get(0),
+                    imgPoliceSelf: $('#img_police_self').get(0),
+                    imgThief: $('#img_thief').get(0),
+                    imgThiefSelf: $('#img_thief_self').get(0),
+                    imgSwitch: $('#img_switch').get(0)
                 };
-            }
+            }         
             function setMapCanvasSizing($canvas, width, height) {
-                /**
+            	/**
                  * TODO Task 2. Опишите функцию которая задаст размеры игрового поля
                  */
+                $canvas.css("width", width + "px")
+                    .css("height", height + "px")
+                    .attr("width", width + "px")
+                    .attr("height", height + "px");
                 return $canvas;
             }
             function drawMapField(canvas, map, width, height, cellSize) {
