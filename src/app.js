@@ -870,32 +870,72 @@
                  *              повешайте обработчики событий на кнопки
                  *              нажатия на кнопки это событие click
                  */
-                // var c = this.state.callbacks;
-                // c.captionChanged
-                // c.invalidGame
-                // c.mapChanged
-                // c.playerChanged
-                // c.statusChanged
-                // c.synced
-                // c.syncing
-                // c.teamCaptionChanged
-                // c.teamCoinsChanged
-                // c.teamLivesChanged
-                // c.teamPlayersChanged
-                // c.timerChanged
+                var c = this.state.callbacks;
+                c.captionChanged.add(function (name, status){
+                    this.setGameCaption(name, status);
+                }.bind(this))
+                c.invalidGame.add(function () {
+                    this.showError();
+                }.bind(this));
+                c.mapChanged.add(function (map) {
+                    this.updateMap(map);
+                }.bind(this));
+                c.playerChanged.add(function (player) {
+                    this.updatePlayer(player);
+                }.bind(this));
+                c.statusChanged.add(function (status) {
+                    this.setButtons(status);
+                }.bind(this));
+                c.synced.add(function () {
+                    this.show();
+                }.bind(this));
+                c.syncing.add(function () {
+                    this.showLoading();
+                }.bind(this));
+                c.teamCaptionChanged.add(function (team){
+                    this.updateTeamCaption(team)
+                }.bind(this))
+                c.teamCoinsChanged.add(function (team) {
+                    this.updateTeamCoins(team);
+                }.bind(this));
+                c.teamLivesChanged.add(function (team) {
+                    this.updateTeamLives(team);
+                }.bind(this));
+                c.teamPlayersChanged.add(function (team){
+                    this.updateTeam(team)
+                }.bind(this))
+                c.timerChanged.add(function (data) {
+                    this.setTimer(data);
+                }.bind(this));
             };
             GameView.prototype.bindButtons = function () {
                 // TODO Task 3.1 повешайте обработчики событий
-                // var btns = this.btns;
-                // var $lastKey = -1;
-                // btns.$btnGameList.
-                // btns.$btnStart.
-                // btns.$btnConnect.
-                // btns.$btnConnectPolice.
-                // btns.$btnConnectThief.
-                // btns.$btnLeave.
-                // btns.$btnPause.
-                // btns.$btnCancel.
+                var btns = this.btns;
+                var $lastKey = -1;
+                btns.$btnGameList.click(function () {
+                    window.location.href = 'index.html';
+                }.bind(this));
+                btns.$btnStart.click(function () {
+                    this.state.game.start();
+                }.bind(this));
+                btns.$btnConnect.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.random);
+                }.bind(this));
+                btns.$btnConnectPolice.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.police);
+                }.bind(this));
+                btns.$btnConnectThief.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.thief);
+                }.bind(this));
+                btns.$btnLeave.click(function () {
+                    this.state.game.start();
+                }.bind(this));
+                btns.$btnPause.click(function () {
+                    this.state.game.pause();
+                }.bind(this));
+                btns.$btnCancel.click(function () {
+                    this.state.game.cancel();
+                }.bind(this));
                 $(window).on('keydown', function(event) {
                     if ($lastKey === event.keyCode) {
                         return;
@@ -903,24 +943,24 @@
                     /**
                      * TODO Task 4. Вместо event.keyCode начните использовать event.key
                      */
-                    switch (event.keyCode) {
-                        case 32:
+                    switch (event.key) {
+                        case ' ':
                             event.preventDefault();
                             this.state.game.stopMoving();
                             break;
-                        case 37:
+                        case 'ArrowLeft':
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.left);
                             break;
-                        case 38:
+                        case 'ArrowUp':
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.top);
                             break;
-                        case 39:
+                        case 'ArrowRight':
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.right);
                             break;
-                        case 40:
+                        case 'ArrowDown':
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.bottom);
                             break;
