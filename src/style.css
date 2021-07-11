@@ -132,12 +132,11 @@ tr {
 
 button {
     background-color: #212529;
-    border: 2px solid #A9A9A9;
     color: #A9A9A9;
     border-radius: 5px;
     margin: 0 0 10px 10px;
     width: auto;
-    font-size: 16px;
+   font-size: 16px;
     font-weight: bold;
 }
 
