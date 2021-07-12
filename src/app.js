@@ -779,6 +779,7 @@
                     // mapCellSize: 25
                 };
             }
+
             function getButtons() {
                 // TODO Task1.2 Объявление переменных и их связка с DOM
                 return {
@@ -792,6 +793,7 @@
                     // $btnCancel:
                 };
             }
+            
             function getImages() {
                 // TODO Task1.3 Объявление переменных и их связка с DOM
                 return {
