@@ -1059,7 +1059,7 @@
                 this.game.$gameCaption
                     .empty()
                     .append($(app.utils.t(
-                        "<div>{name} <span class='game-status-{status}'>{statusName}</span><div>",
+                        "<div>Игра {name} <span class='game-status-{status}'>{statusName}</span><div>",
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
             GameView.prototype.setTimer = function (data) {
@@ -1086,10 +1086,12 @@
                  * TODO: Task 6. Поменяйте под вашу вёрстку
                  */
                 return $(app.utils.t(
-                    "<div><span class='game-player-name'>{name}</span>" +
-                    "[<span class='game-player-coins'>{coins}</span>;" +
-                    "<span class='game-player-lives'>{lives}</span>;" +
-                    "<span class='game-player-deaths'>{deaths}</span>]</div>", {
+                    "<div id='player{playerId}'>" +
+	                    "<span class='game-player-name'>{name}</span>" +
+	                    "[<span class='game-player-coins'>{coins}</span>;" +
+	                    "<span class='game-player-lives'>{lives}</span>;" +
+	                    "<span class='game-player-deaths'>{deaths}</span>]" + 
+	                "</div>", {
                     playerId: player.id,
                     status: status,
                     name: player.name,
@@ -1123,7 +1125,7 @@
                     .empty()
                     .append(app.utils.t(
                         "<div class='game-team-{role}-caption'>" +
-                            "<span class='game-team-name'>{name}</span> " +
+                            "<span class='game-team-name'>{name}:</span> " +
                             "<span class='game-team-role game-team-role-{role}'>{roleName}</span>" +
                         "</div>", {
                             role: role,

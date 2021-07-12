@@ -60,7 +60,7 @@ header{
 	background-color: grey;
 	justify-content: center;
 	align-self: flex-end;
-	border-radius: 8px;
+	border-radius: 5px;
 	margin-top: 1%;
 	border: none;
 	vertical-align: middle;
@@ -136,9 +136,15 @@ button {
     border-radius: 5px;
     margin: 0 0 10px 10px;
     width: auto;
-   font-size: 16px;
+    font-size: 16px;
     font-weight: bold;
+    border: 2px solid #A9A9A9;
 }
+
+button:hover {
+    background-color: #404142;
+}
+
 
 #game-name {
 	font-size: 20px;
@@ -180,4 +186,12 @@ button {
 .timer {
 	font-size: 30px;
 	font-weight: bold;
+}
+
+.game-player {
+	background: #303030; 
+}
+
+.game-team-name {
+	margin-left: 8px;
 }
