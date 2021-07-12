@@ -19,7 +19,7 @@ a {
 }
 
 div {
-	border: 1px solid black;
+	border: none;
 }
 
 header{
@@ -28,7 +28,11 @@ header{
 	display: inline-block;
 	text-align: center;
 	width: 100%;
+	border-bottom: 3px solid #A9A9A9;
+}
 
+#image-store {
+   visibility: hidden;
 }
 
 #img_heart, #img_coin{
@@ -37,7 +41,7 @@ header{
 	vertical-align: middle;
 }
 
-.game-time {
+#game-timer {
 	font-size: 30px;
 	color: #A9A9A9;
 	font-weight: bold;
@@ -51,15 +55,15 @@ header{
 }
 
 .progress-bar{
-	width: 60%;
+	width: 40%;
 	margin: 0 auto;
 	background-color: grey;
-	height: 30px;
 	justify-content: center;
 	align-self: flex-end;
-	border-radius: 8px;
+	border-radius: 5px;
 	margin-top: 1%;
 	border: none;
+	vertical-align: middle;
 }
 
 .game{
@@ -68,6 +72,7 @@ header{
 	margin-top: 30px;
 	color: #A9A9A9;
 	border: none;
+	border-bottom: 3px solid #A9A9A9;
 }
 
 .game-map{
@@ -78,15 +83,19 @@ header{
 }
 
 .game-score{
-	flex: 0 0 200px;
+	flex: 0 0 250px;
 	border: none;
 }
 
-.game-score-1, .game-score-2{
+#game-score-1, #game-score-2{
+	border: 3px solid #A9A9A9;
 	border-radius: 10px; 
-	border-color: #A9A9A9;
-	border-width: 3px;
 	background: #303030;
+}
+
+.player{
+	background: #303030;
+	border: none;
 }
 
 .game-button{
@@ -99,6 +108,7 @@ header{
     justify-content: center;
     flex-wrap: wrap;
     vertical-align: middle;
+   	margin-top: 25px;
 }
 
 .team, #name-team-1, #name-team-2 {
@@ -122,17 +132,66 @@ tr {
 
 button {
     background-color: #212529;
-    border-color: #A9A9A9;
     color: #A9A9A9;
-    border-width: 2px;
     border-radius: 5px;
     margin: 0 0 10px 10px;
     width: auto;
     font-size: 16px;
     font-weight: bold;
+    border: 2px solid #A9A9A9;
+}
+
+button:hover {
+    background-color: #404142;
+}
+
+
+#game-name {
+	font-size: 20px;
 }
 
 .game-button button:last-child  {
 	border-color: #D11213;
 	color: #D11213;
+}
+
+.game-status-0 {
+	background-color: yellow;
+}
+
+.game-status-1 {
+	background-color: orange;
+}
+
+.game-status-2, .game-status-3, .game-status-4 {
+    background-color: limegreen;
+}
+
+.game-status-5 {
+    background-color: red;
+}
+
+.game-status-6 {
+    background-color: mediumpurple;
+}
+
+.game-status-0, .game-status-1, 
+.game-status-2, .game-status-3, 
+.game-status-4, .game-status-5, 
+.game-status-6 {
+	border-radius: 5px;
+
+}
+
+.timer {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.game-player {
+	background: #303030; 
+}
+
+.game-team-name {
+	margin-left: 8px;
 }
