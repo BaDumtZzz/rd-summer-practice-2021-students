@@ -1,0 +1,626 @@
+{
+	"info": {
+		"_postman_id": "3c40f199-1505-474c-a4b9-9efc48767d84",
+		"name": "Practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Token type is corrected.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.token_type).to.eql(\"bearer\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Azimov123",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/token",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get information about current user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Login is corrected.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.login).to.eql(\"Azimov123\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/me",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get information about user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The user ID matches.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(\"86079dfdcd8447da948a38b0eea70c71\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/user/86079dfdcd8447da948a38b0eea70c71",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"user",
+						"86079dfdcd8447da948a38b0eea70c71"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all maps",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Maps exist.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.not.eql(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/maps",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"maps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create game",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The game with the current name was created successfully.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"TestGame1\");\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.globals.set(\"id_create_game\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Name\": \"TestGame1\",\r\n  \"MapId\": \"89f76ef11b58469abb7ca070ae5c6264\",\r\n  \"SwitchTimeout\": 0,\r\n  \"StartupTeamLives\": 0,\r\n  \"PoliceSpeed\": 0,\r\n  \"ThiefSpeed\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/game",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all games",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Games exist.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.not.eql(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/game?start=0&count=20",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"game"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "0"
+						},
+						{
+							"key": "count",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get info about game",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Game exist.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.not.eql(null);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/game/{{id_create_game}}",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"game",
+						"{{id_create_game}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user games",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User's games exist.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.not.eql(null);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/game",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var rndValue = Math.floor(Math.random()* 100000) * 99999;\r",
+							"pm.environment.set(\"rndValueEnv\", rndValue);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201.\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Account cteated succesfully.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var user_name = \"User\" + pm.environment.get(\"rndValueEnv\");\r",
+							"    pm.expect(jsonData.login).to.eql(user_name);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"User{{rndValueEnv}}\", \r\n    \"nativeName\": \"Test User\", \r\n    \"password\": \"qwerty\", \r\n    \"confirmPassword\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/user",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete game",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 202.\", function () {\r",
+							"    pm.response.to.have.status(202);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/game/{{id_create_game}}",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"game",
+						"{{id_create_game}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user maps",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The maps are successfully missing.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/user/86079dfdcd8447da948a38b0eea70c71/maps",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"user",
+						"86079dfdcd8447da948a38b0eea70c71",
+						"maps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update information about myself",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200.\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Name changed successfully.\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.nativeName).to.eql(\"Ivan Ivanovich\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"NativeName\": \"Ivan Ivanovich\",\r\n  \"Role\": 1,\r\n  \"OldPassword\": \"password\",\r\n  \"Password\": \"password\",\r\n  \"ConfirmPassword\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://52.191.9.145:8085/api/user/86079dfdcd8447da948a38b0eea70c71",
+					"protocol": "http",
+					"host": [
+						"52",
+						"191",
+						"9",
+						"145"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"user",
+						"86079dfdcd8447da948a38b0eea70c71"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAy8dVwWyvrUi8AV2fBiR-uAAAAAACAAAAAAAQZgAAAAEAACAAAACXuR3o2zCK7TJ59vTuQu7fiy2Wf3gIAbhJm7mQZnwpcgAAAAAOgAAAAAIAACAAAACCic1Ka8XYs0UUU19a70SHsqkwk9mYgjVGhpXLbfnnBxABAAAANwNPjkJx0XVzwtsACv6s4Ijx1eFMhW5kjiVb22ilMOz2C6iiO9c7uBso5vfg4dI4imiwScO8ojauWV0VseH_AMwtF31ehyBDNJ7C_veRbHKT4McumbQys-S_H6TDouza91WNTymdAPnsnm53-ZsHprVQooTc26KwXaykP1xPMM5OlzxUL-ud-dq1ga3baFWQul257PsskEJ59aUftlMvhv1jSQpqbh41Nh0u5DUjJKbtQITp7UONhQzmmS8-4TImHZzDmQlGPJsbXa3lKIscwAqDkQ00lsp_skCmAQLd_RDD-NjsNRxIDWIJiQyQTwB20OwYpQTYwDmvhoZSOaQA6PwzbMud3MYy8zUxH0fA7EAAAAAnO7OXq4p-4_AVcxDz4wGsoTMF5aL-GuHobEO274VcvuZvHmkwSuncmCr5TFtysvBWhlRIktJ4j_BcJUyZBEy0",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
